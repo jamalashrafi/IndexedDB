@@ -1,3 +1,24 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  /* background-color: $color-primary; */
+}
+
+a {
+  list-style-type: none;
+  text-decoration: none;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +31,56 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.headerContainer {
+  background-color: orange;
+  height: 5rem;
+}
+.bodyContainer {
+  background: #2e2e2e;
+  display: flex;
+  height: 92vh;
+}
+.sideBarContainer {
+  background-color: #000;
+  width: 15%;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sideBarContainer a {
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.6rem;
+  color: orange;
+  border-bottom: 1px solid orange;
+}
+
+.appComponents {
+  width: 80%;
+}
+
+.taskName,
+.datePicker {
+  padding: 1rem;
+  margin: 0.5rem;
+}
+button {
+  padding: 1rem;
+  margin: 0.5rem;
+  width: 10rem;
+}
+
+.textStyle {
+  font-size: 3rem;
+  color: #eee;
+  background-color: orange;
+  padding: 1rem;
+  min-width: 2rem;
+}
+
+.formClass {
+  margin-top: 3rem;
 }

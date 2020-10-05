@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './Header';
+import SideBar from './SideBar';
+import CreateTask from './CreateTask';
+import ModifyTasks from './ModifyTasks';
+import { loadDBSettings } from './util';
 
 function App() {
+  loadDBSettings();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Router>
+        <div className="bodyContainer">
+          <SideBar />
+          <div className="appComponents">
+            <Route path="/createTask" component={CreateTask} />
+            <Route path="/modifyTasks" component={ModifyTasks} />
+          </div>
+        </div>
+      </Router>
     </div>
   );
 }
