@@ -3,11 +3,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
   Card,
-  CardImg,
-  CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
   Button,
   Input,
   Row,
@@ -20,18 +17,20 @@ import { formatDate } from './util';
 const CreateTask = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [taskName, setTaskName] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
 
   const submitTask = () => {
     let dueDate = formatDate(startDate);
     let taskObj = {
       taskName: taskName,
+      taskDescription : taskDescription,
       years: dueDate.years,
       month: dueDate.month,
       day: dueDate.day,
       hours: dueDate.hours,
       minutes: dueDate.minutes,
     };
-    let openRequest = indexedDB.open('taskApp', 8);
+    let openRequest = indexedDB.open('taskApp', 9);
 
     openRequest.onsuccess = function () {
       let db = openRequest.result;
@@ -42,22 +41,14 @@ const CreateTask = () => {
       request.onsuccess = function () {
         alert('task created successfully');
         setTaskName('');
+        setTaskDescription('');
+        setStartDate(new Date());
         console.log('task added to the store', request.result);
       };
     };
   };
 
-  //   let d1 = formatDate(startDate);
-  //   let d2 = formatDate(new Date());
 
-  //   if (
-  //     d1.year == d2.year &&
-  //     d1.month == d2.month &&
-  //     d1.day == d2.day &&
-  //     d1.hour == d2.hour &&
-  //     d1.minute == d2.minute
-  //   )
-  //     alert('same');
   return (
     <div>
       <Card>
@@ -71,7 +62,15 @@ const CreateTask = () => {
                     type="text"
                     value={taskName}
                     className="taskName"
+                    placeholder="Task Name"
                     onChange={(e) => setTaskName(e.target.value)}
+                  />
+                   <Input
+                    type="text"
+                    value={taskDescription}
+                    className="taskName"
+                    placeholder="Description"
+                    onChange={(e) => setTaskDescription(e.target.value)}
                   />
                 </FormGroup>
               </Form>
