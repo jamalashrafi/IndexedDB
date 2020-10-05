@@ -11,8 +11,8 @@ export const formatDate = (date) => {
 };
 
 export const loadDBSettings = () => {
-  debugger;
-  //let db;
+
+ 
 
   // In the following line, you should include the prefixes of implementations you want to test.
   //   window.indexedDB =
@@ -30,7 +30,7 @@ export const loadDBSettings = () => {
     window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 
   // Let us open our database
-  const DBOpenRequest = window.indexedDB.open('taskApp', 8);
+  const DBOpenRequest = window.indexedDB.open('taskApp', 9);
 
   // these two event handlers act on the database being opened successfully, or not
   DBOpenRequest.onerror = function (event) {
@@ -50,6 +50,7 @@ export const loadDBSettings = () => {
       let objectStore = db.createObjectStore('toDoList', {
         keyPath: 'taskName',
       }); // create it
+      objectStore.createIndex('description', 'description', { unique: false });
       objectStore.createIndex('hours', 'hours', { unique: false });
       objectStore.createIndex('minutes', 'minutes', { unique: false });
       objectStore.createIndex('day', 'day', { unique: false });
