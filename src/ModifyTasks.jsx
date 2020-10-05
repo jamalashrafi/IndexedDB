@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Card,
-  CardImg,
-  CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
   Button,
-  Input,
   Row,
   Col,
-  FormGroup,
-  Form,
 } from 'reactstrap';
 var _ = require('lodash');
 
@@ -19,22 +13,9 @@ const ModifyTasks = () => {
   const [taskId, setTaskId] = useState('');
   const [storedTask, setStoredTask] = useState({});
 
-  useEffect(() => {
-    // let openRequest = indexedDB.open('taskApp', 8);
-    // openRequest.onsuccess = function () {
-    //   let db = openRequest.result;
-    //   let transaction = db.transaction('toDoList', 'readwrite');
-    //   let taskData = transaction.objectStore('toDoList');
-    //   let desiredObj = taskData.get(taskId);
-    //   desiredObj.onsuccess = function () {
-    //     setTaskId(desiredObj.result);
-    //   };
-    // };
-  }, [taskId]);
-
   const handleChange = (event) => {
     event.preventDefault();
-    let openRequest = indexedDB.open('taskApp', 8);
+    let openRequest = indexedDB.open('taskApp', 9);
 
     openRequest.onsuccess = function () {
       let db = openRequest.result;
@@ -46,7 +27,6 @@ const ModifyTasks = () => {
       desiredObj.onsuccess = function () {
         let updatedObj = desiredObj.result;
 
-        console.log(updatedObj);
         setStoredTask(updatedObj);
       };
     };
@@ -55,7 +35,7 @@ const ModifyTasks = () => {
   const deleteTask = () => {
     if (_.isEmpty(storedTask)) alert('There is no task to delete');
     else {
-      console.log('Delete');
+
       let openRequest = indexedDB.open('taskApp', 8);
       openRequest.onsuccess = function () {
         let db = openRequest.result;
@@ -67,7 +47,6 @@ const ModifyTasks = () => {
           alert('taskDeleted');
           setTaskId('');
           setStoredTask({});
-          console.log(deletedClient.result);
         };
       };
     }
@@ -87,8 +66,8 @@ const ModifyTasks = () => {
         <br />
         <Button type="submit">Submit</Button>
       </form>
-      <hr />
-      <Card>
+
+      <Card  className="cardStyle">
         <CardBody>
           <CardTitle className="textStyle">
             {_.isEmpty(storedTask) === false ? storedTask.taskName : ''}
