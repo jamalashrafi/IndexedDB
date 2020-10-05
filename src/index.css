@@ -35,17 +35,17 @@ code {
 
 .headerContainer {
   background-color: orange;
-  height: 5rem;
+  height: 7vh;
 }
 .bodyContainer {
   background: #2e2e2e;
   display: flex;
-  height: 92vh;
+  height: 93vh;
 }
 .sideBarContainer {
   background-color: #000;
   width: 15%;
-  height: 92vh;
+  height: 93vh;
   display: flex;
   flex-direction: column;
 }
