@@ -8,7 +8,10 @@ const SideBar = () => {
         Create Tasks
       </Link>
       <Link to="/modifyTasks" className="">
-        List | Delete Tasks
+        Search | Delete Tasks
+      </Link>
+      <Link to="/updateTasks" className="">
+        List All | Update Tasks
       </Link>
     </div>
   );
