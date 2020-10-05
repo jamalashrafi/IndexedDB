@@ -84,3 +84,10 @@ button {
 .formClass {
   margin-top: 3rem;
 }
+
+.cardStyle {
+  margin : 0 0 1rem 5rem;
+  cursor: pointer;
+}
+
+ 
