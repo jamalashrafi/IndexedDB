@@ -36,7 +36,7 @@ const ModifyTasks = () => {
     if (_.isEmpty(storedTask)) alert('There is no task to delete');
     else {
 
-      let openRequest = indexedDB.open('taskApp', 8);
+      let openRequest = indexedDB.open('taskApp', 9);
       openRequest.onsuccess = function () {
         let db = openRequest.result;
         let transaction = db.transaction('toDoList', 'readwrite');
